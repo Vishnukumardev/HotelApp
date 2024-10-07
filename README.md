@@ -1,16 +1,27 @@
-# ui_app
+# UI App - Hotel Booking UI
 
-A new Flutter project.
+A Flutter project showcasing a modern hotel booking UI.
+
+## Overview
+
+This project is designed to provide a visually appealing and intuitive user interface for hotel booking, including key features like searching for locations, viewing popular destinations, and checking recommended or most-viewed hotels. The UI is built using Flutter and can be customized for any travel or hotel booking platform.
+
+## Key Features
+
+- **Search Functionality**: A search bar with filters for finding hotels or destinations.
+- **Popular Locations**: A horizontal list of popular travel destinations with images and location names.
+- **Recommended Hotels**: A scrollable list of top recommended hotels with pricing, ratings, and room details.
+- **Most Viewed Hotels**: A vertical list of the most-viewed hotels with detailed room descriptions, images, and ratings.
+- **Responsive Design**: Optimized for both mobile and tablet screens.
+
+## Screenshots
+
+_Add screenshots of your app here._
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run this project locally, follow these steps:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/ui_app.git
