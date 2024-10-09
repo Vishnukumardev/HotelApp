@@ -54,4 +54,4 @@ List<String> houseRatings = [
   "4.6/5"
 ];
 
-final List<String> houseUrls = [house1];
+final List<String> houseUrls = [house1, house2, house3, house4, house5, house6];

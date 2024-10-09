@@ -107,14 +107,35 @@ class Bookingui extends StatelessWidget {
                             margin: const EdgeInsets.symmetric(horizontal: 8),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                image: AssetImage(imageUrls[index]),
-                                fit: BoxFit.cover,
-                              ),
                             ),
                             child: Stack(
                               alignment: Alignment.bottomCenter,
                               children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.network(
+                                    imageUrls[index],
+                                    fit: BoxFit.cover,
+                                    height: 150,
+                                    width: 120,
+                                    loadingBuilder:
+                                        (context, child, loadingProgress) {
+                                      if (loadingProgress == null) return child;
+                                      return Center(
+                                        child: CircularProgressIndicator(
+                                          value: loadingProgress
+                                                      .expectedTotalBytes !=
+                                                  null
+                                              ? loadingProgress
+                                                      .cumulativeBytesLoaded /
+                                                  loadingProgress
+                                                      .expectedTotalBytes!
+                                              : null,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
                                 Container(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
@@ -165,15 +186,30 @@ class Bookingui extends StatelessWidget {
                                 Stack(
                                   alignment: Alignment.topRight,
                                   children: [
-                                    Container(
-                                      width: 200,
-                                      height: 130,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        image: DecorationImage(
-                                          image: AssetImage(imageUrls[index]),
-                                          fit: BoxFit.cover,
-                                        ),
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        houseUrls[index],
+                                        fit: BoxFit.cover,
+                                        height: 130,
+                                        width: 200,
+                                        loadingBuilder:
+                                            (context, child, loadingProgress) {
+                                          if (loadingProgress == null)
+                                            return child;
+                                          return Center(
+                                            child: CircularProgressIndicator(
+                                              value: loadingProgress
+                                                          .expectedTotalBytes !=
+                                                      null
+                                                  ? loadingProgress
+                                                          .cumulativeBytesLoaded /
+                                                      loadingProgress
+                                                          .expectedTotalBytes!
+                                                  : null,
+                                            ),
+                                          );
+                                        },
                                       ),
                                     ),
                                     GestureDetector(
@@ -230,7 +266,7 @@ class Bookingui extends StatelessWidget {
                                               fontSize: 12,
                                               fontWeight: FontWeight.bold,
                                             ),
-                                          )
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -271,9 +307,22 @@ class Bookingui extends StatelessWidget {
                         padding: const EdgeInsets.all(10.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
-                          child: Image.asset(
+                          child: Image.network(
                             hosting,
                             fit: BoxFit.cover,
+                            loadingBuilder: (BuildContext context, Widget child,
+                                ImageChunkEvent? loadingProgress) {
+                              if (loadingProgress == null) return child;
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes !=
+                                          null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                          loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),
@@ -352,9 +401,35 @@ class Bookingui extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(10),
-                                          image: DecorationImage(
-                                            image: AssetImage(imageUrls[index]),
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          child: Image.network(
+                                            houseUrls[index],
                                             fit: BoxFit.cover,
+                                            height: 150,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            loadingBuilder: (context, child,
+                                                loadingProgress) {
+                                              if (loadingProgress == null)
+                                                return child;
+                                              return Center(
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  value: loadingProgress
+                                                              .expectedTotalBytes !=
+                                                          null
+                                                      ? loadingProgress
+                                                              .cumulativeBytesLoaded /
+                                                          loadingProgress
+                                                              .expectedTotalBytes!
+                                                      : null,
+                                                ),
+                                              );
+                                            },
                                           ),
                                         ),
                                       ),
