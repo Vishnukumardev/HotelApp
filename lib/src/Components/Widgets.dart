@@ -28,10 +28,8 @@ Widget loadingImage(String url, {double? height, double? width}) {
   );
 }
 
-Widget buildSearchBar(BuildContext context) {
-  double screenWidth = MediaQuery.of(context).size.width;
-  double screenHeight = MediaQuery.of(context).size.height;
-  double textScale = MediaQuery.of(context).textScaleFactor;
+Widget buildSearchBar(BuildContext context, double screenWidth,
+    double screenHeight, double textScale) {
   double titleFontSize = screenWidth * 0.065 * textScale;
   double labelFontSize = screenWidth * 0.035 * textScale;
   double textFieldHeight = screenHeight * 0.08;
@@ -56,7 +54,7 @@ Widget buildSearchBar(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              child: Container(
+              child: SizedBox(
                 height: textFieldHeight,
                 child: TextField(
                   decoration: InputDecoration(
@@ -115,11 +113,8 @@ Widget buildSearchBar(BuildContext context) {
   );
 }
 
-Widget buildPopularLocations(BuildContext context) {
-  double screenWidth = MediaQuery.of(context).size.width;
-  double screenHeight = MediaQuery.of(context).size.height;
-  double textScale = MediaQuery.of(context).textScaleFactor;
-
+Widget buildPopularLocations(BuildContext context, double screenWidth,
+    double screenHeight, double textScale) {
   double titleFontSize = screenWidth * 0.05 * textScale;
   double itemFontSize = screenWidth * 0.04 * textScale;
 
@@ -146,7 +141,7 @@ Widget buildPopularLocations(BuildContext context) {
           height: containerHeight,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: locations.length,
+            itemCount: houses.length,
             itemBuilder: (context, index) {
               return Container(
                 width: itemWidth,
@@ -155,14 +150,14 @@ Widget buildPopularLocations(BuildContext context) {
                   alignment: Alignment.bottomCenter,
                   children: [
                     loadingImage(
-                      imageUrls[index],
+                      houses[index].imageUrl,
                       height: containerHeight,
                       width: itemWidth,
                     ),
                     Container(
                       padding: EdgeInsets.all(screenWidth * 0.02),
                       child: Text(
-                        locations[index],
+                        houses[index].location,
                         style: getTextStyle(
                           fontSize: itemFontSize,
                           fontWeight: FontWeight.bold,
@@ -182,11 +177,8 @@ Widget buildPopularLocations(BuildContext context) {
   );
 }
 
-Widget buildRecommended(BuildContext context) {
-  double screenWidth = MediaQuery.of(context).size.width;
-  double screenHeight = MediaQuery.of(context).size.height;
-  double textScale = MediaQuery.of(context).textScaleFactor;
-
+Widget buildRecommended(BuildContext context, double screenWidth,
+    double screenHeight, double textScale) {
   double titleFontSize = screenWidth * 0.05 * textScale;
   double priceFontSize = screenWidth * 0.03 * textScale;
   double ratingFontSize = screenWidth * 0.03 * textScale;
@@ -216,15 +208,15 @@ Widget buildRecommended(BuildContext context) {
           height: containerHeight,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: locations.length,
+            itemCount: houses.length,
             itemBuilder: (context, index) {
               double dynamicItemWidth = itemWidth;
               double dynamicContainerHeight = containerHeight;
 
-              if (locations.length < 3) {
+              if (houses.length < 3) {
                 dynamicItemWidth = screenWidth * 0.7;
                 dynamicContainerHeight = screenHeight * 0.4;
-              } else if (locations.length == 3) {
+              } else if (houses.length == 3) {
                 dynamicItemWidth = screenWidth * 0.55;
                 dynamicContainerHeight = screenHeight * 0.35;
               }
@@ -239,7 +231,7 @@ Widget buildRecommended(BuildContext context) {
                       alignment: Alignment.topRight,
                       children: [
                         loadingImage(
-                          houseUrls[index],
+                          houses[index].houseUrl,
                           height: dynamicContainerHeight * 0.52,
                           width: dynamicItemWidth,
                         ),
@@ -269,7 +261,7 @@ Widget buildRecommended(BuildContext context) {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "${prices[index]}/Night",
+                          "${houses[index].price}/Night",
                           style: getTextStyle(
                             fontSize: priceFontSize,
                             fontWeight: FontWeight.bold,
@@ -284,7 +276,7 @@ Widget buildRecommended(BuildContext context) {
                                     color: Colors.red, size: 12),
                               ),
                               TextSpan(
-                                text: houseRatings[index],
+                                text: houses[index].rating,
                                 style: getTextStyle(
                                   fontSize: ratingFontSize,
                                   fontWeight: FontWeight.bold,
@@ -296,14 +288,14 @@ Widget buildRecommended(BuildContext context) {
                       ],
                     ),
                     Text(
-                      houseNames[index],
+                      houses[index].houseName,
                       style: getTextStyle(
                         fontSize: nameFontSize,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      "Private Bedroom/${bedroomCounts[index]}",
+                      "Private Bedroom/${houses[index].bedroomCount}",
                       style: getTextStyle(
                         fontSize: bedroomFontSize,
                       ),
@@ -319,11 +311,8 @@ Widget buildRecommended(BuildContext context) {
   );
 }
 
-Widget buildHostingAd(BuildContext context) {
-  double screenWidth = MediaQuery.of(context).size.width;
-  double screenHeight = MediaQuery.of(context).size.height;
-  double textScale = MediaQuery.of(context).textScaleFactor;
-
+Widget buildHostingAd(BuildContext context, double screenWidth,
+    double screenHeight, double textScale) {
   double titleFontSize = screenWidth * 0.06 * textScale;
   double buttonFontSize = screenWidth * 0.04 * textScale;
 
@@ -386,9 +375,8 @@ Widget buildHostingAd(BuildContext context) {
   );
 }
 
-Widget buildMostViewed(BuildContext context) {
-  double screenWidth = MediaQuery.of(context).size.width;
-  double screenHeight = MediaQuery.of(context).size.height;
+Widget buildMostViewed(
+    BuildContext context, double screenWidth, double screenHeight) {
   double fontSizeFactor = screenWidth / 375;
 
   double screenHeightFactor = screenWidth > 405 ? screenWidth / 405 : 1.0;
@@ -410,19 +398,15 @@ Widget buildMostViewed(BuildContext context) {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             width: screenWidth,
             child: ListView.builder(
-              shrinkWrap:
-                  true, // Makes the list take as much vertical space as necessary
-              physics:
-                  const NeverScrollableScrollPhysics(), // Disables scrolling in the list view itself
-              itemCount: locations.length,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: houses.length,
               itemBuilder: (context, index) {
                 return Container(
-                  height: screenHeight *
-                      0.3 *
-                      screenHeightFactor, // Dynamic height based on screen width
+                  height: screenHeight * 0.3 * screenHeightFactor,
                   width: screenWidth,
                   margin: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
                   child: Padding(
@@ -436,7 +420,7 @@ Widget buildMostViewed(BuildContext context) {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.network(
-                                houseUrls[index],
+                                houses[index].houseUrl,
                                 fit: BoxFit.cover,
                                 height: screenHeight * 0.18,
                                 width: screenWidth,
@@ -484,7 +468,7 @@ Widget buildMostViewed(BuildContext context) {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "${prices[index]}/Night",
+                              "${houses[index].price}/Night",
                               style: TextStyle(
                                 fontSize: 12 * fontSizeFactor,
                                 fontWeight: FontWeight.bold,
@@ -502,7 +486,7 @@ Widget buildMostViewed(BuildContext context) {
                                     ),
                                   ),
                                   TextSpan(
-                                    text: houseRatings[index],
+                                    text: houses[index].rating,
                                     style: TextStyle(
                                       fontSize: 12 * fontSizeFactor,
                                       fontWeight: FontWeight.bold,
@@ -515,7 +499,7 @@ Widget buildMostViewed(BuildContext context) {
                         ),
                         SizedBox(height: screenHeight * 0.005),
                         Text(
-                          houseNames[index],
+                          houses[index].houseName,
                           style: TextStyle(
                             fontSize: 17 * fontSizeFactor,
                             fontWeight: FontWeight.bold,
@@ -523,7 +507,7 @@ Widget buildMostViewed(BuildContext context) {
                         ),
                         SizedBox(height: screenHeight * 0.005),
                         Text(
-                          "Private Bedroom/${bedroomCounts[index]}",
+                          "Private Bedroom/${houses[index].bedroomCount}",
                           style: TextStyle(
                             fontSize: 10 * fontSizeFactor,
                           ),

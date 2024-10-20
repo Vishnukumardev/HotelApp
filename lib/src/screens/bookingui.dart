@@ -3,8 +3,11 @@ import '../Components/Widgets.dart';
 
 class Bookingui extends StatelessWidget {
   const Bookingui({super.key});
- @override
+  @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double textScale = MediaQuery.of(context).textScaleFactor;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -14,15 +17,17 @@ class Bookingui extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              buildSearchBar(context),
+              buildSearchBar(context, screenWidth, screenHeight, textScale),
               const SizedBox(height: 10.0),
-              buildPopularLocations(context),
-              buildRecommended(context),
-              buildHostingAd(context),
-              buildMostViewed(context),
+              buildPopularLocations(
+                  context, screenWidth, screenHeight, textScale),
+              buildRecommended(context, screenWidth, screenHeight, textScale),
+              buildHostingAd(context, screenWidth, screenHeight, textScale),
+              buildMostViewed(context, screenWidth, screenHeight),
             ],
           ),
         ),
       ),
     );
-  }}
+  }
+}

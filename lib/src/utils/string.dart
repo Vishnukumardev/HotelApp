@@ -1,57 +1,78 @@
 import 'package:ui_app/src/utils/assets.dart';
 
-final List<String> locations = [
-  'Indonesia',
-  'Australia',
-  'America',
-  'Europe',
-  'Japan',
-  'India',
-];
+class House {
+  final String location;
+  final String imageUrl;
+  final String houseName;
+  final String bedroomCount;
+  final String price;
+  final String rating;
+  final String houseUrl;
 
-final List<String> imageUrls = [
-  Indonesia, // Replace with your image URLs
-  Australia,
-  America,
-  Europe,
-  Japan,
-  India
-];
+  House({
+    required this.location,
+    required this.imageUrl,
+    required this.houseName,
+    required this.bedroomCount,
+    required this.price,
+    required this.rating,
+    required this.houseUrl,
+  });
+}
 
-List<String> houseNames = [
-  "Sunnyvale Apartments",
-  "Oakwood Residences",
-  "Lakeside Villas",
-  "Maple Grove Homes",
-  "Riverfront Suites",
-  "Pine Hill Cottages"
+final List<House> houses = [
+  House(
+    location: 'Indonesia',
+    imageUrl: Indonesia,
+    houseName: "Sunnyvale Apartments",
+    bedroomCount: "2 bedrooms",
+    price: "\$12.99",
+    rating: "4.5/5",
+    houseUrl: house1,
+  ),
+  House(
+    location: 'Australia',
+    imageUrl: Australia,
+    houseName: "Oakwood Residences",
+    bedroomCount: "3 bedrooms",
+    price: "\$25.50",
+    rating: "4.8/5",
+    houseUrl: house2,
+  ),
+  House(
+    location: 'America',
+    imageUrl: America,
+    houseName: "Lakeside Villas",
+    bedroomCount: "1 bedroom",
+    price: "\$7.45",
+    rating: "4.2/5",
+    houseUrl: house3,
+  ),
+  House(
+    location: 'Europe',
+    imageUrl: Europe,
+    houseName: "Maple Grove Homes",
+    bedroomCount: "4 bedrooms",
+    price: "\$100.00",
+    rating: "4.7/5",
+    houseUrl: house4,
+  ),
+  House(
+    location: 'Japan',
+    imageUrl: Japan,
+    houseName: "Riverfront Suites",
+    bedroomCount: "2 bedrooms",
+    price: "\$59.99",
+    rating: "4.3/5",
+    houseUrl: house5,
+  ),
+  House(
+    location: 'India',
+    imageUrl: India,
+    houseName: "Pine Hill Cottages",
+    bedroomCount: "5 bedrooms",
+    price: "\$3.75",
+    rating: "4.6/5",
+    houseUrl: house6,
+  ),
 ];
-
-List<String> bedroomCounts = [
-  "2 bedrooms",
-  "3 bedrooms",
-  "1 bedroom",
-  "4 bedrooms",
-  "2 bedrooms",
-  "5 bedrooms"
-];
-
-List<String> prices = [
-  "\$12.99",
-  "\$25.50",
-  "\$7.45",
-  "\$100.00",
-  "\$59.99",
-  "\$3.75"
-];
-
-List<String> houseRatings = [
-  "4.5/5",
-  "4.8/5",
-  "4.2/5",
-  "4.7/5",
-  "4.3/5",
-  "4.6/5"
-];
-
-final List<String> houseUrls = [house1, house2, house3, house4, house5, house6];
