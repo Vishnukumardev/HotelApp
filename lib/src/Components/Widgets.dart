@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_app/src/utils/colors.dart';
 import 'package:ui_app/src/utils/string.dart';
-
 import '../utils/assets.dart';
 import '../utils/styles.dart';
 
@@ -180,10 +179,10 @@ Widget buildPopularLocations(BuildContext context, double screenWidth,
 Widget buildRecommended(BuildContext context, double screenWidth,
     double screenHeight, double textScale) {
   double titleFontSize = screenWidth * 0.05 * textScale;
-  double priceFontSize = screenWidth * 0.03 * textScale;
-  double ratingFontSize = screenWidth * 0.03 * textScale;
-  double nameFontSize = screenWidth * 0.03 * textScale;
-  double bedroomFontSize = screenWidth * 0.025 * textScale;
+  double priceFontSize = screenWidth * 0.035 * textScale;
+  double ratingFontSize = screenWidth * 0.025 * textScale;
+  double nameFontSize = screenWidth * 0.04 * textScale;
+  double bedroomFontSize = screenWidth * 0.03 * textScale;
 
   double containerHeight = screenHeight * 0.35;
   double itemWidth = screenWidth * 0.5;
@@ -270,15 +269,20 @@ Widget buildRecommended(BuildContext context, double screenWidth,
                         RichText(
                           text: TextSpan(
                             children: [
-                              const WidgetSpan(
+                              WidgetSpan(
                                 alignment: PlaceholderAlignment.middle,
-                                child: Icon(Icons.star,
-                                    color: Colors.red, size: 12),
+                                child: Icon(
+                                  Icons.star,
+                                  color: Colors.red,
+                                  size:
+                                      screenWidth * 0.04, // Adjusted icon size
+                                ),
                               ),
                               TextSpan(
                                 text: houses[index].rating,
                                 style: getTextStyle(
-                                  fontSize: ratingFontSize,
+                                  fontSize:
+                                      ratingFontSize, // Adjusted font size
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -375,11 +379,11 @@ Widget buildHostingAd(BuildContext context, double screenWidth,
   );
 }
 
-Widget buildMostViewed(
-    BuildContext context, double screenWidth, double screenHeight) {
+Widget buildMostViewed(BuildContext context, double screenWidth,
+    double screenHeight, double textScale) {
   double fontSizeFactor = screenWidth / 375;
-
   double screenHeightFactor = screenWidth > 405 ? screenWidth / 405 : 1.0;
+  double ratingFontSize = screenWidth * 0.035 * textScale;
 
   return Container(
     width: screenWidth,
@@ -422,7 +426,8 @@ Widget buildMostViewed(
                               child: Image.network(
                                 houses[index].houseUrl,
                                 fit: BoxFit.cover,
-                                height: screenHeight * 0.18,
+                                height:
+                                    screenHeight * 0.18 * screenHeightFactor,
                                 width: screenWidth,
                                 loadingBuilder:
                                     (context, child, loadingProgress) {
@@ -450,8 +455,9 @@ Widget buildMostViewed(
                                   color: Colors.white,
                                 ),
                                 margin: EdgeInsets.all(screenWidth * 0.02),
-                                width: 30,
-                                height: 30,
+                                width: screenWidth * 0.08, // Adjust for scaling
+                                height:
+                                    screenWidth * 0.08, // Adjust for scaling
                                 child: const Center(
                                   child: Icon(
                                     Icons.favorite_border,
@@ -477,18 +483,20 @@ Widget buildMostViewed(
                             RichText(
                               text: TextSpan(
                                 children: [
-                                  const WidgetSpan(
+                                  WidgetSpan(
                                     alignment: PlaceholderAlignment.middle,
                                     child: Icon(
                                       Icons.star,
                                       color: Colors.red,
-                                      size: 12,
+                                      size: screenWidth *
+                                          0.035, // Adjust icon size
                                     ),
                                   ),
                                   TextSpan(
                                     text: houses[index].rating,
-                                    style: TextStyle(
-                                      fontSize: 12 * fontSizeFactor,
+                                    style: getTextStyle(
+                                      fontSize:
+                                          ratingFontSize, // Adjusted font size
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),

@@ -76,3 +76,4 @@ final List<House> houses = [
     houseUrl: house6,
   ),
 ];
+

@@ -23,7 +23,7 @@ class Bookingui extends StatelessWidget {
                   context, screenWidth, screenHeight, textScale),
               buildRecommended(context, screenWidth, screenHeight, textScale),
               buildHostingAd(context, screenWidth, screenHeight, textScale),
-              buildMostViewed(context, screenWidth, screenHeight),
+              buildMostViewed(context, screenWidth, screenHeight,textScale),
             ],
           ),
         ),
