@@ -382,7 +382,7 @@ Widget buildHostingAd(BuildContext context, double screenWidth,
 Widget buildMostViewed(BuildContext context, double screenWidth,
     double screenHeight, double textScale) {
   double fontSizeFactor = screenWidth / 375;
-  double screenHeightFactor = screenWidth > 405 ? screenWidth / 405 : 1.0;
+  double screenHeightFactor = screenWidth > 418 ? screenWidth / 418 : 1.0;
   double ratingFontSize = screenWidth * 0.035 * textScale;
 
   return Container(
@@ -393,7 +393,7 @@ Widget buildMostViewed(BuildContext context, double screenWidth,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.all(screenWidth * 0.04),
+            padding: EdgeInsets.all(screenWidth * 0.01),
             child: Text(
               'Most Viewed',
               style: TextStyle(
