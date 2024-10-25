@@ -57,7 +57,7 @@ class _BookinguiState extends State<Bookingui> {
         onTap: _onItemTapped,
         backgroundColor: white,
         selectedItemColor: pink,
-        unselectedItemColor:black,
+        unselectedItemColor: black,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         items: const [

@@ -393,7 +393,7 @@ Widget buildMostViewed(BuildContext context, double screenWidth,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.all(screenWidth * 0.01),
+            padding: EdgeInsets.all(screenWidth * 0.04),
             child: Text(
               'Most Viewed',
               style: TextStyle(
