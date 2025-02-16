@@ -1,4 +1,4 @@
-import 'package:ui_app/src/utils/assets.dart';
+import 'assets.dart';
 
 class House {
   final String location;
@@ -76,4 +76,3 @@ final List<House> houses = [
     houseUrl: house6,
   ),
 ];
-

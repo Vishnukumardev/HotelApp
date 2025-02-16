@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ui_app/src/utils/colors.dart';
-import 'package:ui_app/src/utils/string.dart';
+
 import '../utils/assets.dart';
+import '../utils/colors.dart';
+import '../utils/string.dart';
 import '../utils/styles.dart';
 
 Widget loadingImage(String url, {double? height, double? width}) {

@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:ui_app/src/screens/bookingui.dart';
+import 'utils/path_provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  DependencyInjection.init();
   runApp(const MyApp());
 }
 
@@ -11,13 +12,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Rent All',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const Bookingui(),
+      initialBinding: AuthenticationBindings(),
+      initialRoute: AppRoutes.authentication,
+      getPages: AppPages.pages,
       debugShowCheckedModeBanner: false,
     );
   }

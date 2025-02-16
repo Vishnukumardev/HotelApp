@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ui_app/src/utils/colors.dart';
-import '../Components/Widgets.dart';
+
+import '../../utils/colors.dart';
+import '../../widgets/Widgets.dart';
 
 class Bookingui extends StatefulWidget {
   const Bookingui({super.key});
