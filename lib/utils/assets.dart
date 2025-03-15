@@ -24,3 +24,13 @@ String house6 =
     "https://images.unsplash.com/photo-1504615755583-2916b52192a3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Do";
 String hosting =
     "https://images.unsplash.com/photo-1475552113915-6fcb52652ba2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
+class RegSvg {
+  static const String logo = "assets/logo.svg";
+}
+
+class RegPng {
+  static const String google = "assets/images/PNG/google.png";
+  static const String facebook = "assets/images/PNG/facebook.png";
+  static const String twitter = "assets/images/PNG/twitter.png";
+}

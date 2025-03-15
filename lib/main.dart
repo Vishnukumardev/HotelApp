@@ -3,21 +3,26 @@ import 'utils/path_provider.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   DependencyInjection.init();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
-  // This widget is the root of your application.
+  final ThemeController themeController = Get.put(ThemeController());
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Rent All',
-      initialBinding: AuthenticationBindings(),
-      initialRoute: AppRoutes.authentication,
-      getPages: AppPages.pages,
-      debugShowCheckedModeBanner: false,
-    );
+    return Obx(() => GetMaterialApp(
+          title: 'Rent All',
+          initialBinding: AuthenticationBindings(),
+          initialRoute: AppRoutes.authentication,
+          getPages: AppPages.pages,
+          debugShowCheckedModeBanner: false,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: themeController.isDarkMode.value
+              ? ThemeMode.dark
+              : ThemeMode.light,
+        ));
   }
 }
