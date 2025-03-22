@@ -8,6 +8,10 @@ class AuthenticationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+    final TextEditingController emailId = TextEditingController();
+    final TextEditingController password = TextEditingController();
+    final TextEditingController reEnterPassword = TextEditingController();
     return GetBuilder<AuthenticationController>(
         builder: (controller) => SafeArea(
                 child: Scaffold(
@@ -18,8 +22,17 @@ class AuthenticationPage extends StatelessWidget {
                   child: Column(
                     children: [
                       controller.isRegister
-                          ? loginWidget(controller: controller)
-                          : registerWidget(controller: controller),
+                          ? registerWidget(
+                              controller: controller,
+                              email: emailId,
+                              password: password,
+                              reEnterPassword: reEnterPassword)
+                          : loginWidget(
+                              key: formKey,
+                              controller: controller,
+                              email: emailId,
+                              password: password,
+                            ),
                     ],
                   ),
                 ),

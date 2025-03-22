@@ -15,14 +15,30 @@ export 'package:ui_app/utils/assets.dart';
 ///------------MODELS---------------///
 
 ///------------MODULES---------------///
-//authentication
 export '../modules/authentication/authentication_bindings.dart';
 export '../modules/authentication/authentication_controller.dart';
 export '../modules/authentication/authentication_page.dart';
-//home
+export '../modules/bookings/booking_bindings.dart';
+export '../modules/bookings/bookings_controller.dart';
+export '../modules/bookings/bookings_page.dart';
+export '../modules/favourites/favourite_bindings.dart';
+export '../modules/favourites/favourite_controller.dart';
+export '../modules/favourites/favourite_page.dart';
 export '../modules/home/home_bindings.dart';
 export '../modules/home/home_controller.dart';
 export '../modules/home/home_page.dart';
+export '../modules/main/main_bindings.dart';
+export '../modules/main/main_controller.dart';
+export '../modules/main/main_page.dart';
+export '../modules/map/map_bindings.dart';
+export '../modules/map/map_controller.dart';
+export '../modules/map/map_page.dart';
+export '../modules/messages/message_bindings.dart';
+export '../modules/messages/message_controller.dart';
+export '../modules/messages/message_page.dart';
+export '../modules/profile/profile_bindings.dart';
+export '../modules/profile/profile_controller.dart';
+export '../modules/profile/profile_page.dart';
 
 ///------------ROUTES---------------///
 
@@ -47,3 +63,4 @@ export "../widgets/common_widgets.dart";
 ///------------WIDGETS---------------///
 
 export '../widgets/snackbars.dart';
+export '../widgets/splash_screen.dart';

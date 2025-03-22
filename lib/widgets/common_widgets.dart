@@ -1,3 +1,5 @@
+import 'package:ui_app/utils/validators.dart';
+
 import '../utils/path_provider.dart';
 
 Widget loadingImage(String url, {double? height, double? width}) {
@@ -180,7 +182,7 @@ Widget buildRecommended(BuildContext context, double screenWidth,
   double nameFontSize = screenWidth * 0.04 * textScale;
   double bedroomFontSize = screenWidth * 0.03 * textScale;
 
-  double containerHeight = screenHeight * 0.35;
+  double containerHeight = screenHeight * 0.20;
   double itemWidth = screenWidth * 0.5;
 
   return Container(
@@ -545,8 +547,36 @@ Widget logoWidget(
   );
 }
 
-Widget textInputField() {
-  return TextField();
+Widget textInputField({
+  required TextEditingController controller,
+  int maxlength = 100,
+  bool? obsureText,
+  TextInputType? type,
+  Validator validate = Validator.name,
+  String fieldName = "",
+  int min = 0,
+  int max = 0,
+}) {
+  return TextFormField(
+    controller: controller,
+    obscureText: obsureText ?? false,
+    maxLength: maxlength,
+    showCursor: true,
+    cursorColor: black,
+    validator: (value) {
+      validation(validate, value!, fieldName, min, max);
+    },
+    decoration: InputDecoration(
+      counterText: "",
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    ),
+  );
 }
 
 Widget buttonField({

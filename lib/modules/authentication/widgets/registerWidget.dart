@@ -1,6 +1,10 @@
 import '../../../utils/path_provider.dart';
 
-Widget registerWidget({required AuthenticationController controller}) {
+Widget registerWidget(
+    {required AuthenticationController controller,
+    required TextEditingController email,
+    required TextEditingController password,
+    required TextEditingController reEnterPassword}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     spacing: 10.0,
@@ -20,21 +24,26 @@ Widget registerWidget({required AuthenticationController controller}) {
         "Enter Email or Phone Number",
         style: interMedium(),
       ),
-      textInputField(),
+      textInputField(controller: email),
       Text(
         "Enter New Password",
         style: interMedium(),
       ),
-      textInputField(),
+      textInputField(controller: password),
       Text(
         "Re-enter New Password",
         style: interMedium(),
       ),
-      textInputField(),
+      textInputField(controller: reEnterPassword),
       SizedBox(
         height: 20.0,
       ),
-      Center(child: buttonField(onPressed: () {}, input: "REGISTER")),
+      Center(
+          child: buttonField(
+              onPressed: () {
+                Get.toNamed(AppRoutes.main);
+              },
+              input: "REGISTER")),
       SizedBox(
         height: 20.0,
       ),

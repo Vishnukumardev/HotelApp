@@ -1,17 +1,20 @@
 import '../../../utils/path_provider.dart';
 
 Widget loginWidget({
+  required GlobalKey key,
   required AuthenticationController controller,
+  required TextEditingController email,
+  required TextEditingController password,
 }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     spacing: 10.0,
     children: [
-      SizedBox(
+      const SizedBox(
         height: 90,
       ),
       Center(child: logoWidget()),
-      SizedBox(
+      const SizedBox(
         height: 40,
       ),
       Text(
@@ -22,19 +25,27 @@ Widget loginWidget({
         "Enter Email or Phone Number",
         style: interMedium(),
       ),
-      textInputField(),
+      textInputField(
+        controller: email,
+        validate: Validator.email,
+        fieldName: "Email",
+      ),
       Text(
         "Enter Password",
         style: interMedium(),
       ),
-      textInputField(),
-      SizedBox(
+      textInputField(controller: password),
+      const SizedBox(
         height: 20.0,
       ),
       Center(
           child: buttonField(
-              onPressed: () {}, input: "LOGIN", style: interBold())),
-      SizedBox(
+              onPressed: () {
+                Get.toNamed(AppRoutes.main);
+              },
+              input: "LOGIN",
+              style: interBold())),
+      const SizedBox(
         height: 20.0,
       ),
       Center(
@@ -42,22 +53,22 @@ Widget loginWidget({
         "-or Sign In with-",
         style: interBold(),
       )),
-      SizedBox(
+      const SizedBox(
         height: 20.0,
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(),
-          SizedBox(),
+          const SizedBox(),
+          const SizedBox(),
           imageButton(image: RegPng.google, onTap: () {}),
           imageButton(image: RegPng.facebook, onTap: () {}, padding: 5.0),
           imageButton(image: RegPng.twitter, onTap: () {}),
-          SizedBox(),
-          SizedBox()
+          const SizedBox(),
+          const SizedBox()
         ],
       ),
-      SizedBox(
+      const SizedBox(
         height: 20.0,
       ),
       Center(
@@ -67,7 +78,12 @@ Widget loginWidget({
           WidgetSpan(
               alignment: PlaceholderAlignment.middle,
               child: InkWell(
-                onTap: controller.switchAuth,
+                onTap: () {
+                  // if (key.currentState!.validate()) {
+                  controller.switchAuth();
+                  //   SnackNotification.success(message: "Validation Sucessfull");
+                  // }
+                },
                 child: Text(
                   "Sign Up",
                   style: interRegular(color: Colors.blue),

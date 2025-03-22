@@ -1,16 +1,16 @@
 import '../../utils/path_provider.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class MapPage extends StatelessWidget {
+  const MapPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
+    return GetBuilder<MapController>(
         builder: (controller) => Scaffold(
                 body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(child: Text("Home  ${controller.value}")),
+                Center(child: Text("Map  ${controller.value}")),
                 ElevatedButton(onPressed: controller.add, child: Text("add"))
               ],
             )));

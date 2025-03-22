@@ -1,5 +1,7 @@
 import 'assets.dart';
 
+enum Validator { email, password, phoneNumber, name, age, dob }
+
 class House {
   final String location;
   final String imageUrl;

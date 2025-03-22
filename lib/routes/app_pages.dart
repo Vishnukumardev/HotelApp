@@ -1,5 +1,4 @@
 import 'package:ui_app/utils/path_provider.dart';
-import 'package:ui_app/widgets/splash_screen.dart';
 
 class AppPages {
   static final List<GetPage> pages = [
@@ -12,5 +11,27 @@ class AppPages {
         name: AppRoutes.home,
         page: () => const HomePage(),
         binding: HomeBindings()),
+    GetPage(
+        name: AppRoutes.map,
+        page: () => const MapPage(),
+        binding: MapBindings()),
+    GetPage(
+        name: AppRoutes.messages,
+        page: () => MessagePage(),
+        binding: MessageBindings()),
+    GetPage(
+        name: AppRoutes.profile,
+        page: () => ProfilePage(),
+        binding: ProfileBindings()),
+    GetPage(
+        name: AppRoutes.favourite,
+        page: () => FavouritePage(),
+        binding: FavouriteBindings()),
+    GetPage(
+        name: AppRoutes.bookings,
+        page: () => BookingsPage(),
+        binding: BookingsBindings()),
+    GetPage(
+        name: AppRoutes.main, page: () => MainPage(), binding: MainBindings())
   ];
 }
