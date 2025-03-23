@@ -27,6 +27,7 @@ export '../modules/favourites/favourite_page.dart';
 export '../modules/home/home_bindings.dart';
 export '../modules/home/home_controller.dart';
 export '../modules/home/home_page.dart';
+export '../modules/home/widgets/searchWidget.dart';
 export '../modules/main/main_bindings.dart';
 export '../modules/main/main_controller.dart';
 export '../modules/main/main_page.dart';

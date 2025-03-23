@@ -15,7 +15,7 @@ class AuthenticationPage extends StatelessWidget {
     return GetBuilder<AuthenticationController>(
         builder: (controller) => SafeArea(
                 child: Scaffold(
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               body: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: SingleChildScrollView(

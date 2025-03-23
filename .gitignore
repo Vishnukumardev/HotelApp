@@ -21,15 +21,21 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
+# Dart related
+*.dart.js
+*.js.deps
+*.js.map
+.packages
 .dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
 .pub-cache/
 .pub/
-/build/
+build/
+
+# Flutter related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.flutter-plugins
+.flutter-plugins-dependencies
 
 # Symbolication related
 app.*.symbols
@@ -41,3 +47,22 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# iOS related
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+xcuserdata/
+DerivedData/
+
+# Web related
+web/**/main.dart.js
+web/**/main.dart.js.map
+web/**/main.dart.js.deps
+
+# VS Code settings (optional)
+.vscode/
+
+# macOS related
+macos/Flutter/ephemeral/

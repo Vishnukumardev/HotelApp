@@ -2,7 +2,7 @@ import 'package:ui_app/utils/validators.dart';
 
 import '../utils/path_provider.dart';
 
-Widget loadingImage(String url, {double? height, double? width}) {
+Widget loadingImage(String url, {double height = 100.0, double width = 100.0}) {
   return ClipRRect(
     borderRadius: BorderRadius.circular(10),
     child: Image.network(
@@ -377,157 +377,128 @@ Widget buildHostingAd(BuildContext context, double screenWidth,
   );
 }
 
-Widget buildMostViewed(BuildContext context, double screenWidth,
-    double screenHeight, double textScale) {
-  double fontSizeFactor = screenWidth / 375;
-  double screenHeightFactor = screenWidth > 418 ? screenWidth / 418 : 1.0;
-  double ratingFontSize = screenWidth * 0.035 * textScale;
-
-  return Container(
-    width: screenWidth,
-    color: Colors.white,
-    child: SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.all(screenWidth * 0.04),
-            child: Text(
-              'Most Viewed',
-              style: TextStyle(
-                fontSize: 22 * fontSizeFactor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          SizedBox(
-            width: screenWidth,
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: houses.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  height: screenHeight * 0.3 * screenHeightFactor,
-                  width: screenWidth,
-                  margin: EdgeInsets.symmetric(vertical: screenHeight * 0.01),
-                  child: Padding(
-                    padding: EdgeInsets.all(screenWidth * 0.04),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+Widget buildMostViewed(
+  BuildContext context,
+) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      SizedBox(
+        width: Get.width,
+        child: ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: houses.length,
+          itemBuilder: (context, index) {
+            return Container(
+              height: 280,
+              width: Get.width,
+              margin: EdgeInsets.symmetric(vertical: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Stack(
+                    alignment: Alignment.topRight,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.network(
+                          houses[index].houseUrl,
+                          fit: BoxFit.cover,
+                          height: 200,
+                          width: Get.width,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes!
+                                    : null,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                          ),
+                          margin: EdgeInsets.all(10.0),
+                          width: 50.0,
+                          // Adjust for scaling
+                          height: 30.0,
+                          // Adjust for scaling
+                          child: const Center(
+                            child: Icon(
+                              Icons.favorite_border,
+                              color: Colors.grey,
+                              size: 25,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(houses[index].houseName,
+                          style: interBold(
+                              fontSize: 20.0, fontWeight: FontWeight.w800)),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            WidgetSpan(
+                              alignment: PlaceholderAlignment.middle,
+                              child: Icon(
+                                Icons.star,
+                                color: Theme.of(context).primaryColor,
+                                size: 20, // Adjust icon size
+                              ),
+                            ),
+                            TextSpan(
+                                text: houses[index].rating,
+                                style: interMedium(
+                                    fontWeight: FontWeight.w800, fontSize: 15)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  RichText(
+                    text: TextSpan(
                       children: [
-                        Stack(
-                          alignment: Alignment.topRight,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.network(
-                                houses[index].houseUrl,
-                                fit: BoxFit.cover,
-                                height:
-                                    screenHeight * 0.18 * screenHeightFactor,
-                                width: screenWidth,
-                                loadingBuilder:
-                                    (context, child, loadingProgress) {
-                                  if (loadingProgress == null) return child;
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                      value:
-                                          loadingProgress.expectedTotalBytes !=
-                                                  null
-                                              ? loadingProgress
-                                                      .cumulativeBytesLoaded /
-                                                  loadingProgress
-                                                      .expectedTotalBytes!
-                                              : null,
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white,
-                                ),
-                                margin: EdgeInsets.all(screenWidth * 0.02),
-                                width: screenWidth * 0.08, // Adjust for scaling
-                                height:
-                                    screenWidth * 0.08, // Adjust for scaling
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.favorite_border,
-                                    color: Colors.grey,
-                                    size: 25,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: screenHeight * 0.01),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "${houses[index].price}/Night",
-                              style: TextStyle(
-                                fontSize: 12 * fontSizeFactor,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                children: [
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle,
-                                    child: Icon(
-                                      Icons.star,
-                                      color: Colors.red,
-                                      size: screenWidth *
-                                          0.035, // Adjust icon size
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: houses[index].rating,
-                                    style: getTextStyle(
-                                      fontSize:
-                                          ratingFontSize, // Adjusted font size
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: screenHeight * 0.005),
-                        Text(
-                          houses[index].houseName,
-                          style: TextStyle(
-                            fontSize: 17 * fontSizeFactor,
-                            fontWeight: FontWeight.bold,
+                        WidgetSpan(
+                          child: Icon(
+                            Icons.location_on,
+                            size: 15.0,
+                            color: Theme.of(context).primaryColor,
                           ),
+                          alignment: PlaceholderAlignment.middle,
                         ),
-                        SizedBox(height: screenHeight * 0.005),
-                        Text(
-                          "Private Bedroom/${houses[index].bedroomCount}",
-                          style: TextStyle(
-                            fontSize: 10 * fontSizeFactor,
-                          ),
+                        TextSpan(
+                          text: "location",
+                          style: interRegular(),
                         ),
                       ],
                     ),
                   ),
-                );
-              },
-            ),
-          ),
-        ],
+                ],
+              ),
+            );
+          },
+        ),
       ),
-    ),
+    ],
   );
 }
 
